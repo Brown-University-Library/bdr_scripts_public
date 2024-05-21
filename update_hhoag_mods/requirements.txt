@@ -1,2 +1,2 @@
 python-dotenv==1.0.1
-requests==2.26.0  # avoids python3.8x ssl incompatibility
+requests==2.32.0  # avoids python3.8x ssl incompatibility
