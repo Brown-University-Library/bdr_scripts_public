@@ -7,7 +7,6 @@ requires-python = ">=3.12,<3.13"
 dependencies = [
     "httpx~=0.28.0",
     "lxml~=5.3.0",
-    "requests~=2.27.0",
 ]
 
 [dependency-groups]

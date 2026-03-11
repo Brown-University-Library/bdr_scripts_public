@@ -10,7 +10,7 @@ Usage:
 import argparse
 from io import BytesIO
 
-import requests
+import httpx
 from lxml import etree
 
 
@@ -38,7 +38,7 @@ def validate_mods_xml(xml_file_path):
     try:
         if schema_url.startswith('http://') or schema_url.startswith('https://'):
             # Fetch the schema from the URL
-            response = requests.get(schema_url)
+            response = httpx.get(schema_url, timeout=30.0)
             response.raise_for_status()  # Raise an error for bad HTTP status codes
             # schema_doc = etree.parse(BytesIO(response.content))
             schema_doc = etree.parse(BytesIO(response.content), parser)
@@ -48,7 +48,7 @@ def validate_mods_xml(xml_file_path):
                 # schema_doc = etree.parse(schema_file)
                 schema_doc = etree.parse(schema_file, parser)
         xml_schema = etree.XMLSchema(schema_doc)
-    except (etree.XMLSyntaxError, IOError, requests.RequestException) as e:
+    except (etree.XMLSyntaxError, IOError, httpx.HTTPError) as e:
         print(f"Error loading schema: {e}")
         return False
 
