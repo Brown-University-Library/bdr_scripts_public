@@ -1,16 +1,26 @@
 # deletion
 
-Under-construction; not yet implemented.
+Under development; doesn't work yet.
 
 
-## from bdr
+## via api
 
-- BDR-api deletion intentionally does not delete from ocfl storage.
+- N/A -- BDR-api deletion intentionally does not delete from ocfl storage.
 
 ---
 
-## from ocfl
+## via_rocfl.py
 
-- [rocfl](https://github.com/pwinckles/rocfl) info
+(Under development; doesn't work yet.)
+
+This script demonstrates deletion of items from OCFL storage, using the [rocfl][rocfl] library.
+
+Usage:
+
+```bash
+uv run ./via_rocfl.py --pids "bdr:12345,bdr:67890"
+```
+
+[rocfl]: https://github.com/pwinckles/rocfl
 
 ---
