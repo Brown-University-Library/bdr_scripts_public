@@ -4,10 +4,10 @@
 
 Repo for small scripts for different purposes.
 
-Suggestion... we put 50-word summaries here, and link to internal READMEs for more info.
+Suggestion... we put 50-word-max summaries here, and link to internal READMEs for more info.
 
 - `deletion`
-    - short summary: TODO
+        - short summary: Under-construction -- doesn't work yet -- invitation for pull-requests!
     - [more info](https://github.com/Brown-University-Library/bdr_scripts/blob/main/deletion/README.md)
 
 - `get_is-part-of_pids`
@@ -25,5 +25,9 @@ Suggestion... we put 50-word summaries here, and link to internal READMEs for mo
 - `solr_collections`
     - short summary: TODO
     - [more info](https://github.com/Brown-University-Library/bdr_scripts/blob/main/solr_collections/README.md)
+
+- `validate_mods`
+    - short summary: Validates MODS against the schema in the root `<mods: mods>` element.
+    - [more info](https://github.com/Brown-University-Library/bdr_scripts/blob/main/validate_mods/readme.md)
 
 ---
