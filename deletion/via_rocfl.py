@@ -1,3 +1,12 @@
+"""
+(Under development; doesn't work yet)
+
+This script demonstrates deletion of items from OCFL storage.
+
+Usage:
+    uv run ./via_rocfl.py --pids "bdr:12345,bdr:67890"
+"""
+
 import argparse, logging, os, pathlib
 
 from dotenv import load_dotenv
@@ -43,7 +52,7 @@ if __name__ == '__main__':
     ## set up argparser ---------------------------------------------
     log.debug( '\n\nstarting processing' )
     parser = argparse.ArgumentParser(description='Deletes OCFL pid.')
-    parser.add_argument('-pids', '--pids', required=True, help='comma-separated list of pids to delete')
+    parser.add_argument('--pids', required=True, help='comma-separated list of pids to delete')
     args = parser.parse_args()
     log.debug( f'args: {args}' )
     ## get PIDS -----------------------------------------------------
