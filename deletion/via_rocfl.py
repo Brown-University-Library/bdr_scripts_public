@@ -1,14 +1,14 @@
 import argparse, logging, os, pathlib
 
-## 3rd party
-from dotenv import load_dotenv, find_dotenv
+from dotenv import load_dotenv
 
 ## load envars
-load_dotenv( find_dotenv(raise_error_if_not_found=True) )
-STORAGE_ROOT_PATH = pathlib.Path( os.environ['DEL__STORAGE_ROOT_PATH'] )
+DOT_ENV_PATH = pathlib.Path( __file__ ).resolve().parents[2] / 'dot_env_files' / 'deletion.env'
+load_dotenv( DOT_ENV_PATH )
+STORAGE_ROOT_PATH = pathlib.Path( os.environ['STORAGE_ROOT_PATH'] )
 
 ## setup logging
-lglvl: str = os.environ.get( 'DEL__LOGLEVEL', 'DEBUG' )
+lglvl: str = os.environ.get( 'LOGLEVEL', 'DEBUG' )
 lglvldct = {
     'DEBUG': logging.DEBUG,
     'INFO': logging.INFO }

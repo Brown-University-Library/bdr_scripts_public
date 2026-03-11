@@ -1,0 +1,14 @@
+[project]
+name = "delete"
+version = "0.0.0"
+description = "Will be code to demonstrate deletion of items from OCFL storage."
+readme = "https://github.com/Brown-University-Library/bdr_scripts_public/blob/main/deletion/readme.md"
+requires-python = ">=3.12,<3.13"
+dependencies = [
+    "python-dotenv~=1.2.0",
+]
+
+[dependency-groups]
+local = []
+staging = []
+prod = []
