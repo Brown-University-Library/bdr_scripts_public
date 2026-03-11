@@ -62,7 +62,7 @@ def validate_mods_xml(xml_file_path):
 
 def main():
     parser = argparse.ArgumentParser(description='Validate a MODS XML file against its embedded schema.')
-    parser.add_argument('--mods_path', required=True, help='Path to the MODS XML file to validate.')
+    parser.add_argument('--mods-path', required=True, help='Path to the MODS XML file to validate.')
     args = parser.parse_args()
     validate_mods_xml(args.mods_path)
 
