@@ -2,6 +2,9 @@
 MODS XML Validator 
 - Intentionally focuses on MODS to allow for mods-specific enhancements.
 - First TODO: allow an additional argument to a schematron file.
+
+Usage:
+    uv run ./validate_mods_code.py --mods-path './example_mods/invalid_mods.xml'
 """
 
 import argparse
