@@ -7,7 +7,7 @@ Repo for small scripts for different purposes.
 Suggestion... we put 50-word-max summaries here, and link to internal READMEs for more info.
 
 - `deletion`
-        - short summary: Under-construction -- doesn't work yet -- invitation for pull-requests!
+        - short summary: Under-construction -- not yet implemented
     - [more info](https://github.com/Brown-University-Library/bdr_scripts/blob/main/deletion/README.md)
 
 - `get_is-part-of_pids`
