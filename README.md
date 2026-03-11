@@ -8,7 +8,7 @@ Suggestion... we put 50-word-max summaries here, and link to internal READMEs fo
 
 - `deletion`
         - short summary: Under-construction -- not yet implemented
-    - [more info](https://github.com/Brown-University-Library/bdr_scripts/blob/main/deletion/README.md)
+    - [more info](https://github.com/Brown-University-Library/bdr_scripts/blob/main/deletion/readme.md)
 
 - `get_is-part-of_pids`
     - short summary: Walkthrough of how to get a list of pids that are "part-of" another object.
