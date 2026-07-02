@@ -5,9 +5,10 @@ from pathlib import Path
 
 from dotenv import load_dotenv
 
-DOTENV_PATH: Path = Path(__file__).resolve().parent / 'dot_env_files' / 'ocfl_cleanup_dev.env'
+## the dotenv-directory is in the "stuff" directory.
+DOTENV_PATH: Path = Path(__file__).resolve().parents[2] / 'dot_env_files' / 'ocfl_cleanup_dev.env'
 
-# load variables from script-specific dotenv file
+## load variables from script-specific dotenv file
 load_dotenv(DOTENV_PATH)
 OCFL_DIR = os.getenv('OCFL_DIR')
 ROCFL_CMD = os.getenv('ROCFL_CMD')
