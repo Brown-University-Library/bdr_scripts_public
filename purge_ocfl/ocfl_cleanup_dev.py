@@ -7,6 +7,8 @@ from dotenv import load_dotenv
 
 ## the dotenv-directory is in the "stuff" directory.
 DOTENV_PATH: Path = Path(__file__).resolve().parents[2] / 'dot_env_files' / 'ocfl_cleanup_dev.env'
+REPO_ROOT: Path = Path(__file__).resolve().parents[1]
+STUFF_ROOT: Path = Path(__file__).resolve().parents[2]
 
 ## load variables from script-specific dotenv file
 load_dotenv(DOTENV_PATH)
@@ -24,14 +26,29 @@ def get_env_var(env_var_name: str) -> str:
     return env_var_value
 
 
+def resolve_external_path(path_value: str, path_description: str) -> Path:
+    """
+    Resolves an output path and rejects paths inside the git repository.
+
+    Called by: module initialization
+    """
+    raw_path = Path(path_value)
+    path = raw_path if raw_path.is_absolute() else STUFF_ROOT / raw_path
+    resolved_path = path.resolve()
+    if resolved_path.is_relative_to(REPO_ROOT):
+        raise SystemExit(f'{path_description} must be outside the git repository: {resolved_path}')
+    return resolved_path
+
+
 OCFL_DIR: Path = Path(get_env_var('OCFL_DIR'))
 ROCFL_CMD: str = get_env_var('ROCFL_CMD')
-LOG_FILE: Path = Path(get_env_var('LOG_FILE'))
+LOG_FILE: Path = resolve_external_path(get_env_var('LOG_FILE'), 'LOG_FILE')
 PIDS_FILE: Path = Path(get_env_var('PIDS_FILE'))
 DRY_RUN: str = get_env_var('DRY_RUN')
 
 
 ## set up logging
+LOG_FILE.parent.mkdir(parents=True, exist_ok=True)
 logging.basicConfig(filename=LOG_FILE, level=logging.INFO, format='%(asctime)s %(message)s')
 log = logging.getLogger(__name__)
 
