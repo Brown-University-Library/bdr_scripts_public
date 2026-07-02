@@ -1,11 +1,14 @@
 import logging
 import os
 import subprocess
+from pathlib import Path
 
-from dotenv import find_dotenv, load_dotenv
+from dotenv import load_dotenv
 
-# load variables from .env file
-load_dotenv(find_dotenv())
+DOTENV_PATH: Path = Path(__file__).resolve().parent / 'dot_env_files' / 'ocfl_cleanup_dev.env'
+
+# load variables from script-specific dotenv file
+load_dotenv(DOTENV_PATH)
 OCFL_DIR = os.getenv('OCFL_DIR')
 ROCFL_CMD = os.getenv('ROCFL_CMD')
 LOG_FILE = os.getenv('LOG_FILE')

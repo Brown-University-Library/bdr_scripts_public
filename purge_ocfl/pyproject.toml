@@ -4,7 +4,9 @@ version = "0.0.0"
 description = "Deletes OCFL directory via PID."
 readme = "https://github.com/Brown-University-Library/bdr_scripts_public/blob/main/purge_ocfl/README.md"
 requires-python = ">=3.12,<3.13"
-dependencies = []
+dependencies = [
+    "python-dotenv~=1.2.0",
+    ]
 
 [dependency-groups]
 local = []
