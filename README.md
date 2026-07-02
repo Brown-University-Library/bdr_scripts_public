@@ -1,7 +1,5 @@
 # Purpose
 
-(repo was previously named `bdr_dashboard_scripts`)
-
 Repo for small scripts for different purposes.
 
 Suggestion... we put 50-word-max summaries here, and link to internal READMEs for more info.
