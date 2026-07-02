@@ -8,14 +8,17 @@ This utility downloads MODS XML files for a reviewed list of BDR PIDs and writes
 
 `save_mods.py` reads configuration from `../../dot_env_files/save_mods_to_dir.env`, including the MODS URL pattern, log level, request timeout, and process count. It accepts an output directory and a PID-list file, downloads each PID's MODS XML concurrently, writes each file as `<pid>__MODS.xml` with colons converted to underscores, and checks that saved files are well-formed XML.
 
+Downloaded MODS files must be written outside the `bdr_scripts_public` git repository.
+
 ## Usage
 
 From the `save_mods_to_dir` directory:
 
-1. Create the dotenv directory if it does not already exist:
+1. Create the dotenv and output directories if they do not already exist:
 
 ```shell
 mkdir -p ../../dot_env_files
+mkdir -p ../../output_files/save_mods_to_dir
 ```
 
 2. Copy `sample.env` to the script-specific dotenv path:
@@ -32,7 +35,7 @@ cp ./sample.env ../../dot_env_files/save_mods_to_dir.env
 4. Run the script with `uv`:
 
 ```shell
-uv run ./save_mods.py --output_dir_path "/path/to/output_dir" --pids_list_path "/path/to/bdr_pids.txt"
+uv run ./save_mods.py --output_dir_path "../../output_files/save_mods_to_dir" --pids_list_path "/path/to/bdr_pids.txt"
 ```
 
 To confirm configuration without downloading files:

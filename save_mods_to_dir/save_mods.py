@@ -15,6 +15,7 @@ from dotenv import load_dotenv
 
 ## the dotenv-directory is in the "stuff" directory.
 DOTENV_PATH: Path = Path(__file__).resolve().parents[2] / 'dot_env_files' / 'save_mods_to_dir.env'
+REPO_ROOT: Path = Path(__file__).resolve().parents[1]
 
 ## load variables from script-specific dotenv file
 load_dotenv(DOTENV_PATH)
@@ -102,6 +103,18 @@ def validate_path(arg_path: str) -> Path:
     path = Path(arg_path).resolve()
     if not path.exists():
         raise SystemExit(f'path does not exist: {arg_path}')
+    return path
+
+
+def validate_output_path(arg_path: str) -> Path:
+    """
+    Validates that an output path exists and is outside the git repository.
+
+    Called by: main()
+    """
+    path = validate_path(arg_path)
+    if path.is_relative_to(REPO_ROOT):
+        raise SystemExit(f'output_dir_path must be outside the git repository: {path}')
     return path
 
 
@@ -206,7 +219,7 @@ def main() -> None:
         display_envars()
     if not args.output_dir_path or not args.pids_list_path:
         raise SystemExit('Both --output_dir_path and --pids_list_path are required.')
-    output_dir_path = validate_path(args.output_dir_path)
+    output_dir_path = validate_output_path(args.output_dir_path)
     pids_list_path = validate_path(args.pids_list_path)
     start_time = time.monotonic()
     run_multiprocessing(output_dir_path, pids_list_path)

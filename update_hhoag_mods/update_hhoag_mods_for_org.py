@@ -16,6 +16,9 @@ from dotenv import load_dotenv
 
 ## the dotenv-directory is in the "stuff" directory.
 DOTENV_PATH: Path = Path(__file__).resolve().parents[2] / 'dot_env_files' / 'update_hhoag_mods.env'
+REPO_ROOT: Path = Path(__file__).resolve().parents[1]
+STUFF_ROOT: Path = Path(__file__).resolve().parents[2]
+DEFAULT_LOG_PATH: Path = STUFF_ROOT / 'log_files' / 'update_hhoag_mods.log'
 
 ## load variables from script-specific dotenv file
 load_dotenv(DOTENV_PATH)
@@ -33,10 +36,24 @@ def get_env_var(env_var_name: str) -> str:
     return env_var_value
 
 
+def resolve_external_path(path_value: str, path_description: str) -> Path:
+    """
+    Resolves an output path and rejects paths inside the git repository.
+
+    Called by: module initialization
+    """
+    raw_path = Path(path_value)
+    path = raw_path if raw_path.is_absolute() else STUFF_ROOT / raw_path
+    resolved_path = path.resolve()
+    if resolved_path.is_relative_to(REPO_ROOT):
+        raise SystemExit(f'{path_description} must be outside the git repository: {resolved_path}')
+    return resolved_path
+
+
 BDR_API_ROOT: str = get_env_var('UHHM__BDR_API_URL_ROOT').rstrip('/')
 LOGLEVEL: str = os.getenv('UHHM__LOGLEVEL', 'DEBUG')
 BINARY_PATH: str = get_env_var('UHHM__UPDATE_MODS_BINARY_PATH')
-LOG_PATH: Path = Path(os.getenv('UHHM__LOG_PATH', '../logs/update_hhoag_mods.log')).resolve()
+LOG_PATH: Path = resolve_external_path(os.getenv('UHHM__LOG_PATH', str(DEFAULT_LOG_PATH)), 'UHHM__LOG_PATH')
 REQUEST_TIMEOUT: float = float(os.getenv('UHHM__REQUEST_TIMEOUT', '30'))
 
 ## for the `update_mods` python-binary
@@ -95,6 +112,8 @@ def validate_arg_paths(mods_directory_path: Path, tracker_directory_path: Path) 
         raise SystemExit(f'Error: The path {mods_directory_path} does not exist.')
     if not tracker_directory_path.is_dir():
         raise SystemExit(f'Error: The path {tracker_directory_path} is not a directory.')
+    if tracker_directory_path.is_relative_to(REPO_ROOT):
+        raise SystemExit(f'Error: tracker_dir must be outside the git repository: {tracker_directory_path}')
 
 
 def display_envars() -> None:
