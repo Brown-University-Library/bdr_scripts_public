@@ -1,0 +1,12 @@
+[project]
+name = "ocfl-cleanup-script"
+version = "0.0.0"
+description = "Deletes OCFL directory via PID."
+readme = "https://github.com/Brown-University-Library/bdr_scripts_public/blob/main/purge_ocfl/README.md"
+requires-python = ">=3.12,<3.13"
+dependencies = []
+
+[dependency-groups]
+local = []
+staging = []
+prod = []
