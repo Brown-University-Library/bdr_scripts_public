@@ -1,0 +1,16 @@
+[project]
+name = "solr-collections"
+version = "0.0.0"
+description = "Prints BDR collection item counts from the public search API."
+readme = "https://github.com/Brown-University-Library/bdr_scripts_public/blob/main/solr_collections/README.md"
+requires-python = ">=3.12,<3.13"
+dependencies = [
+    "columnar~=1.4.0",
+    "httpx~=0.28.0",
+    "python-dotenv~=1.2.0",
+]
+
+[dependency-groups]
+local = []
+staging = []
+prod = []

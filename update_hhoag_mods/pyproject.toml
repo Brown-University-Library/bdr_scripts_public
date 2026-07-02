@@ -1,0 +1,15 @@
+[project]
+name = "update-hhoag-mods"
+version = "0.0.0"
+description = "Updates BDR MODS records for Hall-Hoag organizations."
+readme = "https://github.com/Brown-University-Library/bdr_scripts_public/blob/main/update_hhoag_mods/README.md"
+requires-python = ">=3.12,<3.13"
+dependencies = [
+    "httpx~=0.28.0",
+    "python-dotenv~=1.2.0",
+]
+
+[dependency-groups]
+local = []
+staging = []
+prod = []

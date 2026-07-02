@@ -1,4 +1,0 @@
-## uses the `package~=x.y.0` syntax to get the latest `x.y` version
-pip-tools~=7.4.0
-python-dotenv~=1.0.0
-requests~=2.27.0  # avoids python3.8x ssl incompatibility introduced in v2.28x

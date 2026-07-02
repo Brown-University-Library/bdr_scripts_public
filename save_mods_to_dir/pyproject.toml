@@ -1,0 +1,15 @@
+[project]
+name = "save-mods-to-dir"
+version = "0.0.0"
+description = "Downloads MODS XML files for BDR PIDs."
+readme = "https://github.com/Brown-University-Library/bdr_scripts_public/blob/main/save_mods_to_dir/README.md"
+requires-python = ">=3.12,<3.13"
+dependencies = [
+    "httpx~=0.28.0",
+    "python-dotenv~=1.2.0",
+]
+
+[dependency-groups]
+local = []
+staging = []
+prod = []
