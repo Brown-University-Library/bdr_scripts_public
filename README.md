@@ -6,17 +6,9 @@ Repo for small scripts for different purposes.
 
 Suggestion... we put 50-word-max summaries here, and link to internal READMEs for more info.
 
-- `deletion`
-        - short summary: Under-construction -- not yet implemented
-    - [more info](https://github.com/Brown-University-Library/bdr_scripts/blob/main/deletion/readme.md)
-
-- `get_is-part-of_pids`
-    - short summary: Walkthrough of how to get a list of pids that are "part-of" another object.
-    - [more info](https://github.com/Brown-University-Library/bdr_scripts/blob/main/get_is-part-of_pids/README.md)
-
 - `purge_ocfl`
-    - short summary: TODO
-    - more info: TODO
+    - short summary: Purges OCFL objects for PIDs listed in a text file using `rocfl`. It confirms before running, supports a dry-run mode, logs each object, and should be used only for development cleanup where permanent OCFL deletion is intended.
+    - [more info](https://github.com/Brown-University-Library/bdr_scripts/blob/main/purge_ocfl/README.md)
 
 - `save_mods_to_dir`
     - short summary: Takes a list of BDR-PIDs and downloads the MODS files to the specified directory.
